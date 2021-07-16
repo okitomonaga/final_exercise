@@ -7,7 +7,6 @@ import (
 	"testing"
 )
 
-
 func TestScaleSlice1(t *testing.T) {
 	x := []float64{1.0, 2.0, 1}
 	operation_target := mat.NewDense(3, 1, x) //操作対象
@@ -23,6 +22,8 @@ func TestScaleSlice2(t *testing.T) {
 	result := scaleSlice(operation_target, 2.0, 3.0)
 	if result.At(0, 0) != 6 || result.At(1, 0) != 15 {
 		t.Error("TestScaleSlice2 is failed")
+	}
+}
 
 func TestParallelTp1(t *testing.T) {
 	x := []float64{1, 2, 1}
@@ -42,4 +43,5 @@ func TestParallelTp2(t *testing.T) {
 	if result.At(0, 0) != 4 || result.At(1, 0) != 4 {
 		t.Error("ParallelTp2 is failed")
 	}
+
 }
