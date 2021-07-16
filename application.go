@@ -13,6 +13,16 @@ func matPrint(X mat.Matrix) {
 	fmt.Printf("%v\n", fa)
 }
 
+func scaleSlice(target mat.Matrix, a float64, b float64) mat.Matrix {
+	// x := []float64{float64(6), float64(3), 1}
+	// result := mat.NewDense(3, 1, x) //操作対象
+	scale := []float64{a, 0, 0, 0, b, 0, 0, 0, 1}
+	scale_mat := mat.NewDense(3, 3, scale)
+	result := mat.NewDense(3, 3, nil) //全て0
+	result.MulElem(scale_mat, target)
+	return result
+}
+
 func main() {
 	var a string
 	var b string
