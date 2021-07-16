@@ -2,13 +2,19 @@ package main
 
 import (
 	//"reflect"
-	//"fmt"
+	"fmt"
+	"gonum.org/v1/gonum/mat"
 	"testing"
 )
 
 func TestParallelTp1(t *testing.T) {
-	result := ParallelTp("1,2")
-	if result[0] != 1 || result[1] != 2 { //resultと"hoge"の型を比較している
+	x := []float64{1, 2, 1}
+	operation_target := mat.NewDense(3, 1, x)
+	result := parallelTp(operation_target, 1, 1)
+	fa := mat.Formatted(result, mat.Prefix(""), mat.Squeeze())
+	fmt.Printf("%v\n", fa)
+
+	if result.At(0, 0) != 2 || result.At(1, 0) != 3 {
 		t.Error("ParallelTp1 is failed")
 	}
 }
