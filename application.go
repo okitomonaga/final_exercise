@@ -4,6 +4,10 @@ import "fmt"
 import "strconv"
 import "gonum.org/v1/gonum/mat"
 
+func parallelTp(X mat.Matrix, x float64, y float64) mat.Matrix {
+	return mat.NewDense(3, 1, []float64{2, 3, 1})
+}
+
 func matPrint(X mat.Matrix) {
 	fa := mat.Formatted(X, mat.Prefix(""), mat.Squeeze())
 	fmt.Printf("%v\n", fa)
