@@ -17,7 +17,7 @@ func main() {
 	ai, _ := strconv.Atoi(a)
 	bi, _ := strconv.Atoi(b)
 
-	x := []float64{ai, bi, 1}
+	x := []float64{float64(ai), float64(bi), 1}
 	operation_target := mat.NewDense(3, 1, x) //操作対象
 	matPrint(operation_target)
 
