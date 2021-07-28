@@ -5,6 +5,12 @@ import "strconv"
 import "math"
 import "gonum.org/v1/gonum/mat"
 
+func PrintCoordinate(X mat.Matrix) string {
+	return "(" + strconv.FormatFloat(X.At(0, 0), 'f', 2, 64) + "," + strconv.FormatFloat(X.At(1, 0), 'f', 2, 64) + ")"
+
+	//return "(1,2)"
+}
+
 func parallelTp(X mat.Matrix, x float64, y float64) mat.Matrix {
 	tp := []float64{1, 0, x, 0, 1, y, 0, 0, 1}
 	tp_mat := mat.NewDense(3, 3, tp)
@@ -50,7 +56,8 @@ func main() {
 
 	x := []float64{float64(ai), float64(bi), 1}
 	operation_target := mat.NewDense(3, 1, x) //操作対象
-	matPrint(operation_target)
+	fmt.Println(PrintCoordinate(operation_target))
+	//matPrint(operation_target)
 
 	// result1 := parallelTp(operation_target, 1.0, 1.0)
 
@@ -76,8 +83,8 @@ func main() {
 		parallelX, _ := strconv.Atoi(parallelX_s)
 		parallelY, _ := strconv.Atoi(parallelY_s)
 		result := parallelTp(operation_target, float64(parallelX), float64(parallelY))
-		fmt.Println("最終出力は以下の通りです。")
-		matPrint(result)
+		fmt.Printf("最終出力は" + PrintCoordinate(result) + "です。\n")
+		//matPrint(result)
 	case "3":
 		fmt.Println("実装予定です。")
 	case "4":
@@ -85,13 +92,11 @@ func main() {
 		var scaleX_s string
 		var scaleY_s string
 		fmt.Scan(&scaleX_s, &scaleY_s)
-		scaleX, _ := strconv.Atoi(scaleX_s)
-		scaleY, _ := strconv.Atoi(scaleY_s)
-		result := scaleSlice(operation_target, float64(scaleX), float64(scaleY))
-		fmt.Println(scaleX)
-		fmt.Println(scaleY)
-		fmt.Println("最終出力は以下の通りです。")
-		matPrint(result)
+		scaleX, _ := strconv.ParseFloat(scaleX_s, 64)
+		scaleY, _ := strconv.ParseFloat(scaleY_s, 64)
+		result := scaleSlice(operation_target, scaleX, scaleY)
+		fmt.Printf("最終出力は" + PrintCoordinate(result) + "です。\n")
+		//matPrint(result)
 	default:
 		fmt.Println("不正な入力です")
 	}
