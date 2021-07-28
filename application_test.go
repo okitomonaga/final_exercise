@@ -11,7 +11,7 @@ func TestScaleSlice1(t *testing.T) {
 	x := []float64{1.0, 2.0, 1}
 	operation_target := mat.NewDense(3, 1, x) //操作対象
 	result := scaleSlice(operation_target, 2.0, 3.0)
-	if result.At(0, 0) != 6 || result.At(1, 0) != 3 {
+	if result.At(0, 0) != 2 || result.At(1, 0) != 6 {
 		t.Error("TestScaleSlice1 is failed")
 	}
 }

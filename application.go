@@ -18,8 +18,8 @@ func scaleSlice(target mat.Matrix, a float64, b float64) mat.Matrix {
 	// result := mat.NewDense(3, 1, x) //操作対象
 	scale := []float64{a, 0, 0, 0, b, 0, 0, 0, 1}
 	scale_mat := mat.NewDense(3, 3, scale)
-	result := mat.NewDense(3, 3, nil) //全て0
-	result.MulElem(scale_mat, target)
+	result := mat.NewDense(3, 1, nil) //全て0
+	result.Product(scale_mat, target)
 	return result
 }
 
