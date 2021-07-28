@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "strconv"
+import "math"
 import "gonum.org/v1/gonum/mat"
 
 func parallelTp(X mat.Matrix, x float64, y float64) mat.Matrix {
@@ -12,8 +13,15 @@ func parallelTp(X mat.Matrix, x float64, y float64) mat.Matrix {
 	return result
 }
 
-func rotateTp(X mat.Matrix, rad int) mat.Matrix {
-	return mat.NewDense(3, 1, []float64{-2, 1, 1})
+func rotateTp(X mat.Matrix, rad float64) mat.Matrix {
+	rotate := []float64{math.Round(math.Cos(rad*math.Pi/180)*100) / 100, -math.Round(math.Sin(rad*math.Pi/180)*100) / 100, 0, math.Round(math.Sin(rad*math.Pi/180)*100) / 100, math.Round(math.Cos(rad*math.Pi/180)*100) / 100, 0, 0, 0, 1}
+	rotate_mat := mat.NewDense(3, 3, rotate)
+	result := mat.NewDense(3, 1, nil)
+	result.Product(rotate_mat, X)
+	matPrint(result)
+	return result
+	//	return mat.NewDense(3, 1, []float64{-2, 1, 1})
+
 }
 
 func matPrint(X mat.Matrix) {
@@ -53,6 +61,13 @@ func main() {
 	fmt.Scan(&mode)
 	switch mode {
 	case "1":
+		fmt.Println("回転する大きさを決めてください。")
+		var rotate string
+		fmt.Scan(rotate)
+		rotate, _ := strconv.Atoi(rotate)
+		result := rotateTp(operation_target, float64(rotate))
+		fmt.Println("最終出力は以下の通りです。")
+		matPrint(result)
 	case "2":
 		fmt.Println("x軸方向、y軸方向の移動量を入力してください。")
 		var parallelX_s string
@@ -64,6 +79,7 @@ func main() {
 		fmt.Println("最終出力は以下の通りです。")
 		matPrint(result)
 	case "3":
+		fmt.Println("実装予定です。")
 	case "4":
 		fmt.Println("x軸、y軸方向の拡大・縮小の倍率を入力してください。")
 		var scaleX_s string

@@ -55,3 +55,13 @@ func TestRotateTp1(t *testing.T) {
 		t.Error("RotateTp1 is failed")
 	}
 }
+
+func TestRotateTp2(t *testing.T) {
+	x := []float64{2, 3, 1}
+	operation_target := mat.NewDense(3, 1, x)
+	result := rotateTp(operation_target, 180)
+
+	if result.At(0, 0) != -2 || result.At(1, 0) != -3 {
+		t.Error("RotateTp2 is failed")
+	}
+}
