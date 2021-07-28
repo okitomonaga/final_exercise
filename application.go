@@ -8,9 +8,11 @@ func parallelTp(X mat.Matrix, x float64, y float64) mat.Matrix {
 	tp := []float64{1, 0, x, 0, 1, y, 0, 0, 1}
 	tp_mat := mat.NewDense(3, 3, tp)
 	result := mat.NewDense(3, 1, nil)
-	result.MulElem(tp_mat, X)
+	result.Product(tp_mat, X)
 	return result
 }
+
+//func rotateTp(X mat.Matrix, )
 
 func matPrint(X mat.Matrix) {
 	fa := mat.Formatted(X, mat.Prefix(""), mat.Squeeze())
