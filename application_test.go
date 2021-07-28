@@ -56,6 +56,16 @@ func TestRotateTp1(t *testing.T) {
 	}
 }
 
+func TestRotateTp2(t *testing.T) {
+	x := []float64{2, 3, 1}
+	operation_target := mat.NewDense(3, 1, x)
+	result := rotateTp(operation_target, 180)
+
+	if result.At(0, 0) != -2 || result.At(1, 0) != -3 {
+		t.Error("RotateTp2 is failed")
+  }
+}
+
 func TestPrintCoordinate1(t *testing.T) {
 	x := []float64{1, 2, 1}
 	operation_target := mat.NewDense(3, 1, x)
@@ -73,5 +83,6 @@ func TestPrintCoordinate2(t *testing.T) {
 
 	if result != "(3.00,4.00)" {
 		t.Error("TestPrintCoordinate2 is failed")
+
 	}
 }
