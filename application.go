@@ -35,6 +35,9 @@ func main() {
 	operation_target := mat.NewDense(3, 1, x) //操作対象
 	matPrint(operation_target)
 
+	result1 := parallelTp(operation_target, 1.0, 1.0)
+
+	matPrint(result1)
 }
 
 // func main() {
