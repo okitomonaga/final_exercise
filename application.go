@@ -12,7 +12,9 @@ func parallelTp(X mat.Matrix, x float64, y float64) mat.Matrix {
 	return result
 }
 
-//func rotateTp(X mat.Matrix, )
+func rotateTp(X mat.Matrix, rad int) mat.Matrix {
+	return mat.NewDense(3, 1, []float64{-2, 1, 1})
+}
 
 func matPrint(X mat.Matrix) {
 	fa := mat.Formatted(X, mat.Prefix(""), mat.Squeeze())

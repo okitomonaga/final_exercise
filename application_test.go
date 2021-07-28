@@ -46,14 +46,12 @@ func TestParallelTp2(t *testing.T) {
 
 }
 
-/**
 func TestRotateTp1(t *testing.T) {
 	x := []float64{1, 2, 1}
 	operation_target := mat.NewDense(3, 1, x)
-	result := parallelTp(operation_target, 1, 1)
+	result := rotateTp(operation_target, 90)
 
-	if result.At(0, 0) != 2 || result.At(1, 0) != 3 {
-		t.Error("ParallelTp1 is failed")
+	if result.At(0, 0) != -2 || result.At(1, 0) != 1 {
+		t.Error("RotateTp1 is failed")
 	}
 }
-*/
