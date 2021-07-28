@@ -17,7 +17,6 @@ func matPrint(X mat.Matrix) {
 	fmt.Printf("%v\n", fa)
 }
 
-
 func scaleSlice(target mat.Matrix, a float64, b float64) mat.Matrix {
 	// x := []float64{float64(6), float64(3), 1}
 	// result := mat.NewDense(3, 1, x) //操作対象
@@ -27,7 +26,6 @@ func scaleSlice(target mat.Matrix, a float64, b float64) mat.Matrix {
 	result.Product(scale_mat, target)
 	return result
 }
-
 
 func main() {
 	var a string
