@@ -69,9 +69,9 @@ func main() {
 	switch mode {
 	case "1":
 		fmt.Println("回転する大きさを決めてください。")
-		var rotate string
-		fmt.Scan(rotate)
-		rotate, _ := strconv.Atoi(rotate)
+		var rotate_s string
+		fmt.Scan(&rotate_s)
+		rotate, _ := strconv.Atoi(rotate_s)
 		result := rotateTp(operation_target, float64(rotate))
 		fmt.Println("最終出力は以下の通りです。")
 		matPrint(result)
